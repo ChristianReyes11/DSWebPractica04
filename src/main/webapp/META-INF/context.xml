@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/HolaMundoJSF">
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" initialSize="10" jmxEnabled="true" maxActive="-1" maxWait="10000" minIdle="10" name="jdbc/dsweb" password="admin" type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/dsweb" username="postgres" validationInterval="30000" validationQuery="SELECT 1"/>
+</Context>

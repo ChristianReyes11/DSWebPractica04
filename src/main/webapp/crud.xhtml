@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+              integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+        <title>Guardar Alumno</title>
+    </h:head>
+    <h:body styleClass="login-body">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white text-center">
+                            <h1 class="display-4">CRUD ALUMNOS</h1>
+                        </div>
+                        <h:form>
+                            <div class="login-panel ui-fluid">
+                                <p:messages>
+                                    <p:autoUpdate />
+                                </p:messages>
+                                <div class="ui-g">
+                                    <div class="ui-g-12">
+                                        <p:inputText placeholder="Clave" value="#{daoAlumno.alumno.clave}" required="true"/>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <p:inputText placeholder="Nombre" value="#{daoAlumno.alumno.nombre}" required="true"/>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <p:inputText placeholder="Direccion" value="#{daoAlumno.alumno.direccion}" required="true"/>
+                                    </div>
+                                    <div class="ui-g-12">
+                                        <p:inputText placeholder="Telefono" value="#{daoAlumno.alumno.telefono}" required="true"/>
+                                    </div>
+                                    <div class="ui-g-12 button-container">
+                                        <p:commandButton type="Guardar" icon="fa fa-user" value="GUARDAR" styleClass="turquoise-btn" action="#{daoAlumno.create}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="container">
+            <h:form id="form">
+                <p:dataTable id="alumnos" var="alum" value="#{daoAlumno.alumnosL}" rowKey="#{alum.clave}"
+                             selection="#{daoAlumno.selectedAlumno}" selectionMode="single">
+                    <p:column headerText="Clave">
+                        <h:outputText value="#{alum.clave}" />
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{alum.nombre}" />
+                    </p:column>
+                    <p:column headerText="Direccion">
+                        <h:outputText value="#{alum.direccion}" />
+                    </p:column>
+                    <p:column headerText="Telefono">
+                        <h:outputText value="#{alum.telefono}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:contextMenu for="alumnos">
+                    <p:menuitem value="Actualizar" icon="pi pi-pencil" />
+                    <p:menuitem value="Eliminar" update="alumnos" icon="pi pi-trash"/>
+                </p:contextMenu>
+            </h:form>
+        </div>
+    </h:body>
+</html>
